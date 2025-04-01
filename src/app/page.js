@@ -19,7 +19,7 @@ export default function Home() {
   ];
   return (
     <main className="flex flex-col items-center justify-between min-h-screen bg-slate-300">
-      <ul className="mx-auto grid max-w-5xl grid-cols-2 items-start gap-4 p-6">
+      <ul className=" mx-auto grid max-w-5xl grid-cols-2 items-start gap-4 p-6">
         {cardsData.map((card, i) => (
           <Card key={i} {...card} />
         ))}
@@ -30,11 +30,11 @@ export default function Home() {
 
 function Card(props) {
   return (
-    <li className="overflow-hidden rounded-xl bg-white p-4 shadow-md ring-1 ring-black/5 transition hover:-translate-y-px hover:shadow-lg">
-      {props.image && <img src={props.image} alt="" className="mb-4" />}
-      <div className="grid gap-2">
-        {props.title && <h2 className="text-xl font-medium">{props.title}</h2>}
-        <p className="text-slate-700">{props.text}</p>
+    <li className="grid grid-cols-3 group overflow-hidden rounded-xl bg-white shadow-md ring-1 ring-black/5 transition hover:-translate-y-px hover:shadow-lg">
+      {props.image && <img src={props.image} alt="" className="col-span-full" />}
+      <div className="col-span-full grid gap-2 group-has-[img]:p-4 group-not-has-[img]:p-4">
+        {props.title && <h2 className="group-not-has-[img]:text-2xl text-xl font-medium">{props.title}</h2>}
+        <p className=" group-not-has-[img,h2]:text-2xl/[1.4] text-slate-700">{props.text}</p>
       </div>
     </li>
   );
